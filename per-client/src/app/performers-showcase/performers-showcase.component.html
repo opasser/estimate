@@ -1,0 +1,19 @@
+<div class="row">
+  @for (stream of (rooms$ | async) ; track stream.id) {
+    <div class="col-6 col-md-4 col-lg-20 performer-card" (click)="goToPerformer(stream)">
+      <div class="position-relative">
+        <app-view-avatar [imageUrl]="stream.avatarUrl"></app-view-avatar>
+      </div>
+
+      <h3 class="h5">{{ stream.nickName }}</h3>
+      <div class="performer-status" [class.active]="isActive(stream)"></div>
+      @if (stream.privacy === 'private') {
+        <div class="status-private"></div>
+      }
+    </div>
+  }
+</div>
+
+@if (isCategory()) {
+  <vision-performer-showcase></vision-performer-showcase>
+}

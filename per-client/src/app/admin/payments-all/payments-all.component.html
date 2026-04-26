@@ -1,0 +1,11 @@
+<!--@defer () {-->
+  <ul class="tabs">
+    <li><a routerLink="/admin/payments/all" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Payments</a></li>
+    <li><a routerLink="/admin/payments/processing" routerLinkActive="active-link">Processing</a></li>
+    <li><a routerLink="/admin/payments/payout" routerLinkActive="active-link">Payout</a></li>
+  </ul>
+
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+<!--}-->

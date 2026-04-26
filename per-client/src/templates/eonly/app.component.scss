@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+.app-wrapper {
+    --primary-color: #1e88e5;
+    --accent-color: #ff4081;
+    --background-color: #0e0e0e;
+    --text-color: #ffffff;
+    --mdc-elevated-card-container-color: #4f4d4d;
+    --font-family: 'Montserrat', sans-serif;
+    --font-family-title: 'Montserrat', sans-serif;
+
+    //btn
+    --btn-main-color: #fff;
+    --btn-main-bg-color: #3bacb6;
+    --btn-main-hover-color: #fff;
+    --btn-main-hover-bg-color: #45c9d5;
+
+    --btn-outline-main-color: #fff;
+    --btn-outline-main-bg-color: transparent;
+    --btn-outline-main-border-color: #3bacb6;
+    --btn-outline-main-hover-color: #fff;
+    --btn-outline-main-hover-bg-color: #45c9d5;
+
+    --btn-outline-main-disabled-color: #a1dde2;
+    --btn-outline-main-disabled-bg: transparent;
+    --btn-outline-main-disabled-border-color: #a1dde2;
+    --btn-outline-main-disabled-opacity: 0.65;
+
+    //chat
+    --chat-performer-name-color:#00334d;
+    --chat-member-name-color:#E3F2FD;
+    --chat-msg-color:#fff;
+    --chat-bg-color: #fff;
+    --chat-public-bg: #3bacb6;
+    --chat-private-bg: #a7a7a7;
+    --chat-actions-bg: #b2f7fd;
+    --chat-actions-color: #2d2c2c;
+
+    font-family: var(--font-family);
+
+    background-color: var(--background-color);
+    color: var(--text-color);
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+//main-content = container-xxl
+.main-content {
+    --bs-gutter-x: 0;
+    --bs-gutter-y: 0;
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+    margin-right: auto;
+    margin-left: auto;
+    flex: 1;
+}
+
+@media (min-width: 1400px) {
+    .main-content {
+        max-width: 1620px;
+    }
+}
+
+.header,
+.footer {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+a:hover,
+a:focus {
+    color:#1ec8df;
+}

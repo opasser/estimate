@@ -1,0 +1,58 @@
+<div class="px-1">
+  <div class="performer-info-wrapper ">
+    <h2 class="performer-info">{{performer.nickName}}</h2>
+      <div class="viewers-count" [style.color]="rtcAdaptorService.memberList().length> 0 ? 'red': 'white'">
+        <i class="material-icons">remove_red_eye</i>
+        <div class="counter">{{ rtcAdaptorService.memberList().length }}</div>
+      </div>
+  </div>
+
+  <div class="row w-100 mb-2">
+    <div class="col-lg-70">
+      <app-select-media-devices
+        [videoDeviceForm]="rtcAdaptorService.videoDeviceForm"
+        [audioDeviceForm]="rtcAdaptorService.audioDeviceForm"
+        [audioDevices]="rtcAdaptorService.audioDevices()"
+        [videoDevices]="rtcAdaptorService.videoDevices()"
+      >
+      </app-select-media-devices>
+
+      <app-webcam [status]="rtcAdaptorService.status()">
+        <div class="button-block text-center">
+            @if (!this.rtcAdaptorService.streamId) {
+              <button
+                [disabled]="disabled"
+                class="btn btn-main mx-2"
+                (click)="startPublishing()">
+                {{ disabled ? '...Loading' : 'Start Stream' }}
+              </button>
+            } @else {
+              <button
+                [disabled]="disabled"
+                class="btn btn-main mx-2"
+                (click)="stopPublishing()">
+                {{ disabled ? '...Loading' : 'Finish Stream' }}
+              </button>
+            }
+        </div>
+      </app-webcam>
+    </div>
+
+    <app-chat
+      class="col-lg-30"
+      (sentMessage)="sentMessage($event)"
+      [messages]="messages"
+      [role]="performer.role[0]"
+      [participantId]="performer.id"
+    ></app-chat>
+  </div>
+
+  <div class="members-list">
+    Members watching:
+
+    @for (column of  this.rtcAdaptorService.memberList(); track $index) {
+      <span class="member-item">{{ column[0] }}</span>
+    }
+  </div>
+</div>
+

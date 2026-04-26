@@ -1,0 +1,99 @@
+<div class="px-1">
+  @defer (on timer(800)) {
+    <div onlyMember class="row w-100" [streamVisibility]="rtcAdaptorService.status() === ONLINE_STATUS">
+      @if (rtcAdaptorService.status() === 'online') {
+        <app-ant-player
+          [status]="rtcAdaptorService.status()"
+          [streamId]="rtcAdaptorService.streamId"
+          class="col-lg-70 mb-3">
+        </app-ant-player>
+      }
+
+      <div class="col-lg-30 mb-3 chat-main-container">
+        <div class="tabs-wrapper">
+          <div class="tab active public" #tab1 (click)="openTab($event, tab2)">Public</div>
+          <div class="tab private" #tab2 (click)="openTab($event, tab1)">Private</div>
+          <div class="tab tips" [appToggleMenu]="tipsMenu">Tip Me</div>
+          <ul class="payment-wrapper" #tipsMenu>
+            <li><small>Send Tips</small></li>
+            @for (coin of coinsArr; track coin) {
+              <li>
+                <button class="token" (click)="sendTips(coin)" [disabled]="disableButton()">
+                  {{ coin }}
+                </button>
+              </li>
+            }
+          </ul>
+        </div>
+
+        <div class="chat-wrappers">
+          @if (!isPrivateChat) {
+            <app-chat
+              (sentMessage)="sentMessage($event)"
+              [messages]="messages"
+              [participantId]="member?.id"
+              [role]="member.role?.[0]"
+            ></app-chat>
+          } @else {
+            <app-chat
+              (sentMessage)="sentMessage($event)"
+              [messages]="privateMessages"
+              [participantId]="member?.id"
+              [role]="member?.role?.[0]"
+            ></app-chat>
+          }
+        </div>
+      </div>
+    </div>
+
+  @if (performerInfo.privacy === 'private' || isPrivateSession()) {
+    <div class="privacy-status-container">
+      <i class="material-icons private-session">star</i>
+      <small>PRIVATE SESSION</small>
+      <i class="material-icons private-session">star</i>
+    </div>
+  }
+
+    <div class="d-flex">
+      <div class="me-3 avatar">
+        <app-view-avatar [imageUrl]="performerInfo.avatarUrl" [width]="75"></app-view-avatar>
+      </div>
+
+      <div>
+        <h1 class="h3 text-break">{{ performerInfo.nickName }}</h1>
+        <div onlyMember class="d-flex align-items-center">
+          @if (performerInfo.privacy === 'private') {
+            <i class="material-icons performer-status-online me-2">videocam</i>
+            <small>online</small>
+          } @else {
+            <i class=" material-icons performer-status-{{ rtcAdaptorService.status() }} me-2">videocam</i>
+            <small>{{ rtcAdaptorService.status() }}</small>
+          }
+        </div>
+
+        <div onlyGuest class="d-flex align-items-center">
+          <i class="material-icons performer-status-{{ performerInfo.status }} me-2">videocam</i>
+          <small>{{ performerInfo.status === 'active' ? 'online' : 'offline'}}</small>
+        </div>
+      </div>
+
+      <div class="ms-auto">
+        @if (authService.isAuthMember) {
+          @if (rtcAdaptorService.status() === 'online' && performerInfo.privacy === 'public' && !isPrivateSession()) {
+            <button (click)="requestCamToCam()" class="btn btn-main text-nowrap" [disabled]="disableButton()">Cam To Cam</button >
+          }
+        }
+      </div>
+    </div>
+
+    @if (rtcAdaptorService.status() === 'offline' || performerInfo.status === 'finished') {
+       <perf-room-pseudo-stream
+         [status]="(performerInfo.status === 'active') ? 'online' : 'offline'"
+         [performerName]="performerInfo.nickName"
+       >
+       </perf-room-pseudo-stream>
+    }
+
+     <app-gallery [gallery]="gallery()"></app-gallery>
+  }
+</div>

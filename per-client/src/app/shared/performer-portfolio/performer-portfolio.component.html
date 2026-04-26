@@ -1,0 +1,50 @@
+<h1 class="text-center">Gallery</h1>
+
+<div class="list-actions-wrapper mb-3 px-3">
+  <input #files type="file" accept="image/*" multiple (change)="selectFiles($event)"/>
+  <button
+        (click)="files.click()"
+        class="add-button btn btn-outline-main"
+        [disabled]="disableButton()"
+  >
+    {{addButtonName}}
+  </button>
+
+  <div class="image-counter mx-2 mx-lg-5 my-2" [class.danger]="imageCounter < 0">
+    <small>{{imageCounter}} images left per time</small>
+  </div>
+
+  <button (click)="upload()" class="upload-button btn btn-main" [disabled]="disableButton()">
+    Save
+  </button>
+</div>
+
+<div class="px-3 mb-3">
+  <div cdkDropList cdkDropListOrientation="mixed" class="image-list" (cdkDropListDropped)="drop($event)">
+    @if (disableButton()) {
+      <div class="loading-shade">
+        <mat-spinner></mat-spinner>
+      </div>
+    } @else if (!imgArr.length) {
+      <div class="empty-state"> No images </div>
+    }
+
+    @for (img of imgArr; track img) {
+      <div class="image-container" cdkDrag>
+        @if (isThumbnail(img)) {
+          <img class="preview" [src]=" img.thumbnailPath | cdn" [width]="img.thumbW" [height]="img.thumbH"/>
+        } @else {
+          <img class="preview" [src]="img.path" class="preview" [width]="300" [height]="300"/>
+          <div class="new-image">new image</div>
+        }
+
+        <button class="delete-image" mat-mini-fab (click)="deleteImage(img)">
+          <i class="material-icons">delete</i>
+        </button>
+      </div>
+    }
+  </div>
+</div>
+
+
+

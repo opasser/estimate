@@ -1,0 +1,58 @@
+.app-wrapper {
+  //btn
+  --btn-main-color: #fff;
+  --btn-main-bg-color: #DE127B;
+  --btn-main-hover-color: #fff;
+  --btn-main-hover-bg-color: #f12a90;
+
+  --btn-outline-main-color: #131313;
+  --btn-outline-main-bg-color: transparent;
+  --btn-outline-main-border-color: #DE127B;
+  --btn-outline-main-hover-color: #fff;
+  --btn-outline-main-hover-bg-color: #f12a90;
+
+  --btn-outline-main-disabled-color: #cc7ca5;
+  --btn-outline-main-disabled-bg: transparent;
+  --btn-outline-main-disabled-border-color: #cc7ca5;
+  --btn-outline-main-disabled-opacity: 0.65;
+
+  //chat
+  --chat-performer-name-color:#DE127B;
+  --chat-member-name-color:#5586f8;
+  --chat-msg-color:#131313;
+  --chat-bg-color: #fff;
+  --chat-public-bg: #aed6f1;
+  --chat-private-bg: #edbb99;
+  --chat-actions-bg: #efaef1b2;
+  --chat-actions-color: #2d2c2c;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+//main-content = container-xxl
+.main-content {
+  --bs-gutter-x: 0;
+  --bs-gutter-y: 0;
+  width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * .5);
+  padding-left: calc(var(--bs-gutter-x) * .5);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 1400px) {
+  .main-content {
+      max-width: 1620px;
+  }
+}
+
+.main-content {
+  flex: 1;
+  background-color: #FFFFFF;
+}
+
+.height {
+  height: 100% !important;
+}

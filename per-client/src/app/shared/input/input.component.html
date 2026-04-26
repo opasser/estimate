@@ -1,0 +1,54 @@
+<mat-form-field class="form" appearance="outline">
+  <mat-label>{{label()}}</mat-label>
+
+  @switch (tagName()) {
+    @case (tagNames.INPUT) {
+      <input matInput class="input" [type]="type()" [formControl]="control()" [placeholder]="placeholder()">
+    }
+
+    @case (tagNames.TEXT_ARIA) {
+      <textarea matInput
+                [formControl]="control()"
+                cdkTextareaAutosize
+                cdkAutosizeMinRows="1"
+                cdkAutosizeMaxRows="10"
+      >
+
+      </textarea>
+
+    }
+
+    @case (tagNames.SELECT) {
+      <mat-select [formControl]="control()" [multiple]="isMultiple()">
+        @for (option of options(); track option) {
+        <mat-option [value]="option">{{option}}</mat-option>
+        }
+      </mat-select>
+    }
+  }
+
+  @if (control().hasError(errorName()) && errorMessage()) {
+    <mat-error>{{errorMessage()}}</mat-error>
+  }
+
+  @if (control().hasError('required')) {
+    <mat-error>{{label() }} is <strong>required</strong></mat-error>
+  }
+
+  @if (control().hasError('maxlength')) {
+    <mat-error>Please enter no more than <strong>255 characters</strong></mat-error>
+  }
+
+  @if (control().hasError('minlength')) {
+    <mat-error>Please enter at least <strong>8 characters</strong></mat-error>
+  }
+
+  @if (control().hasError('min') || control().hasError('max')) {
+    <mat-error>The payment rate must be between <strong>1</strong> and <strong>100</strong></mat-error>
+  }
+
+  @if (control().hasError('invalidAge')) {
+    <mat-error>You must be at least 18 years old</mat-error>
+  }
+
+</mat-form-field>

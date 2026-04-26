@@ -1,0 +1,9 @@
+const path = require('path');
+require('ts-node/register');
+
+module.exports = {
+  config: path.resolve('./sequelize', 'config.js'),
+  'migrations-path': path.resolve('./sequelize', 'migrations'),
+  'seeders-path': path.resolve('./sequelize', 'seeders'),
+  'models-path': path.resolve('./sequelize', 'models'),
+};

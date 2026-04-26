@@ -1,0 +1,23 @@
+.performer-status-online, .performer-status-active {
+  color: #11e615;
+}
+
+.performer-status-offline, .performer-status-finished {
+  color: #f90505
+}
+
+iframe {
+  width: 100%;
+  min-height: 500px;
+  border: 0;
+  max-width: 1265px;
+  margin: 0 auto;
+  display: block;
+}
+
+.tabs {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 0.5rem;
+}
+

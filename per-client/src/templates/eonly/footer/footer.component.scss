@@ -1,0 +1,32 @@
+:host {
+  box-sizing: border-box;
+  background-color: #131313;
+  padding: 3rem 10px 10px;
+  color: #fff;
+}
+
+a {
+  color: #fff;
+}
+
+a:hover,
+a:focus {
+    color:#1ec8df;
+}
+
+@media (min-width: 1200px) {
+  .mw-66 {
+    max-width: 66.66666667%;
+  }
+}
+
+//btn
+.btn-main {
+  background-color: #3bacb6;
+  border-color: #3bacb6;
+}
+.btn-main:hover {
+  color: #FFFFFF !important;
+  background-color: #45c9d5;
+  border-color: #45c9d5;
+}

@@ -1,0 +1,80 @@
+.loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-group {
+  margin-bottom: 20px;
+}
+
+.table-container {
+  position: relative;
+  overflow-x: auto;
+}
+
+.deleteItem {
+  background-color: #ff4000;
+  color: white;
+}
+
+.editItem {
+  background-color: #fd7014;
+  color: white;
+}
+
+.editPortfolio {
+  background-color: #3498db;
+  color: white;
+}
+
+.readChat {
+  background-color: #117a65;
+  color: white;
+}
+
+.action-wrapper {
+  min-width: 150px;
+  button {
+    margin-right: 10px;
+  }
+}
+
+mat-icon {
+  transform: scale(1.2);
+}
+
+.table-cell {
+  text-align: center;
+}
+
+.empty-state {
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+.table-container table th {
+  background-color: #f9f9f9;
+}
+
+.table-container table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table-container table tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+.no-data {
+  margin-bottom: 20px;
+}

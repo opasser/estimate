@@ -1,0 +1,55 @@
+<div *transloco="let t" class="row w-100 pseudo-{{ status }}">
+  <div class="col-lg-70 mb-3">
+    <div class="player">
+      <span class="fs-3">
+        @if (status === 'offline') {
+          OFFLINE!
+        } @else {
+          {{t("chatFlirt")}}<br/>
+          {{t("withYourCamGirl")}} –<br/>
+          {{t("liveUnfiltered")}}  😏💋
+        }
+        </span>
+    </div>
+    <div class="stream-status">Playing status: {{ status }}</div>
+  </div>
+  <div class="col-lg-30 mb-3 chat-main-container">
+    <div class="tabs-wrapper">
+      <div class="tab active public">Public</div>
+      <div class="tab private">Private</div>
+    </div>
+
+    <div class="chat-wrappers">
+      <div class="chat-container">
+        <div class="chat-view">
+        </div>
+        <div class="enter-text-container">
+          <textarea class="text-input" disabled></textarea>
+          <button class="btn btn-main" disabled>Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *transloco="let t" class="row px-lg-2 mb-3 text-uppercase">
+  @if (status === 'offline') {
+    <a onlyGuest [href]="signupUrl" class="btn btn-main w-100 bottom-button text-truncate">
+      {{t('psevdoStream.checkOutOtherGirls')}}
+      <span class="d-none d-lg-inline">
+        {{t('psevdoStream.enjoyingPrivateShow')}}
+      </span>!
+      <b>{{t('join')}}</b></a>
+
+    <a onlyMember routerLink="/performers" class="btn btn-main w-100 bottom-button">
+       {{t('psevdoStream.checkOutOtherGirls')}}
+      <span class="d-none d-lg-inline">
+        {{t('psevdoStream.enjoyingPrivateShow')}}
+      </span>!</a>
+  } @else {
+      <a onlyGuest [href]="signupUrl" class="btn btn-main w-100 bottom-button text-uppercase text-truncate">
+        {{ performerName }}
+        {{t("isEnjoying")}}
+      <b>{{t('join')}}</b></a>
+  }
+</div>

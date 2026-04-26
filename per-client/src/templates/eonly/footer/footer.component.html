@@ -1,0 +1,90 @@
+<div *transloco="let t" class="container-xxl text-center">
+  <a routerLink="/"
+    ><img
+      src="templates/eonly/img/logo-big.webp"
+      width="393"
+      height="90"
+      class="img-fluid"
+      alt="EroticOnly - Webcam"
+  /></a>
+  <div onlyGuest>
+    <h2 class="h5 font-main mb-2">{{ t("footer.whatIsTitle") }}</h2>
+    <div class="text-start mb-5">{{ t("footer.whatIsText") }}</div>
+  </div>
+  <a onlyGuest [href]="signupUrl" class="btn btn-lg btn-main px-5 mb-5"
+    ><h4 class="fs-3 my-0">{{ t("footer.joinButton") }}</h4></a
+  >
+  <div class="container-xxl">
+    @if (!isAdminAuth()) {
+      <div class="text-center mb-2">
+        <a
+          href="https://eroticonly.com/terms"
+          class="d-inline-block text-nowrap mx-3 mb-3"
+          >{{ t("footer.terms") }}</a
+        >
+        <a
+          href="https://eroticonly.com/privacy"
+          class="d-inline-block text-nowrap mx-3 mb-3"
+          >{{ t("footer.privacy") }}</a
+        >
+        <a
+          href="https://eroticonly.com/dmca"
+          class="d-inline-block text-nowrap mx-3 mb-3"
+          >{{ t("footer.dmca") }}</a
+        >
+        <a
+          href="https://eroticonly.com/contact"
+          class="d-inline-block text-nowrap mx-3 mb-3"
+          >{{ t("footer.support") }}</a
+        >
+        <a
+          href="https://network.eroticonly.com/affiliate"
+          class="d-inline-block text-nowrap mx-3 mb-3"
+          >{{ t("footer.affiliate") }}</a
+        >
+      </div>
+
+      <div class="mw-66 mx-auto">
+        <small>
+          {{ t("footer.legalNotice") }}
+          <a href="https://eroticonly.com/2257" rel="nofollow">
+            {{ t("footer.legalNoticeHere") }}
+          </a>
+          {{ t("footer.legalNoticeRecords") }}
+          <a
+            class="text-decoration-underline"
+            rel="nofollow"
+            href="https://eroticonly.com/2257"
+          >
+            {{ t("footer.legalNoticeLaw") }}</a
+          >
+          {{ t("footer.legalNoticeByEntering") }}
+        </small>
+      </div>
+      <a
+        href="https://www.rtalabel.org/"
+        target="_blank"
+        rel="nofollow"
+        class="d-inline-block my-3"
+        ><img
+          data-src="https://c7535ba9a0.mjedge.net/img/88x31_RTA-5042-1996-1400-1577-RTA_b.gif"
+          class="lazyloaded"
+          title="RTA (Restriced To Adults)"
+          src="https://c7535ba9a0.mjedge.net/img/88x31_RTA-5042-1996-1400-1577-RTA_b.gif"
+      /></a>
+      <small class="d-block mb-3">
+        {{ t("footer.parents") }}
+        <a href="https://network.eroticonly.com">EROTICONLY</a>
+        {{ t("footer.rtaUse") }}
+        <br />
+        {{ t("footer.parentalAdvice") }}
+      </small>
+    }
+
+    <div>{{ t("footer.copyright") }}</div>
+  </div>
+  <small>{{ t("footer.poweredBy") }}</small
+  ><a href="https://bunny-cms.com/" target="_blank"
+    ><small>{{ t("footer.poweredByName") }}</small></a
+  >
+</div>

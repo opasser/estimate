@@ -1,0 +1,90 @@
+<div *transloco="let t" class="container-xxl header-container">
+    <div class="naw-container">
+      <div class="hamburger" [appToggleMenu]="navItems">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <a routerLink="/"><app-inc-logo></app-inc-logo></a>
+
+      <ul class="naw-items" #navItems>
+        @if (isAdminAuth()) {
+          <li>
+            <a routerLink="/admin" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+              dashboard
+            </a>
+          </li>
+          <li><a routerLink="/admin/admins" routerLinkActive="active-link">Admins</a></li>
+          <li><a routerLink="/admin/performers" routerLinkActive="active-link">Performers</a></li>
+          <li><a routerLink="/admin/streams" routerLinkActive="active-link">Streams</a></li>
+          <li><a routerLink="/admin/members" routerLinkActive="active-link">Members</a></li>
+          <li><a routerLink="/admin/payments" routerLinkActive="active-link">Payments</a></li>
+          <li><a routerLink="/admin/categories" routerLinkActive="active-link">Categories</a></li>
+          <li><a routerLink="/admin/tags" routerLinkActive="active-link">Tags</a></li>
+          <li><a routerLink="/admin/banners" routerLinkActive="active-link">Banners</a></li>
+        } @else if (isAuthPerformer()) {
+          <li><a routerLink="/performer" routerLinkActive="active-link">Performer</a></li>
+          <li><a routerLink="/performer-balance" routerLinkActive="active-link">Accrued wages</a></li>
+          <li><a routerLink="/performer-payout" routerLinkActive="active-link">Payouts</a></li>
+          <li><a routerLink="/performer-payments" routerLinkActive="active-link">Payments</a></li>
+        } @else {
+          <li onlyGuest><a [href]="t('header.links.eroticonly')">EROTICONLY</a></li>
+          <li onlyGuest><a [href]="t('header.links.sadoonly')">SADOONLY</a></li>
+
+          <li onlyMember><a href="https://network.eroticonly.com/autologin/1">EROTICONLY</a></li>
+          <li onlyMember><a href="https://network.eroticonly.com/autologin/9">SADOONLY</a></li>
+
+          <li><a routerLink="/performers" routerLinkActive="active-link">{{t('header.camgirls')}}</a></li>
+          <li onlyGuest><a class="star" [href]="t('header.links.sadoonlyCreators')">
+              <span class="material-icons">star</span>
+              <span>SadoOnly Creators</span></a>
+          </li>
+
+          <li onlyMember><a class="star" href="https://network.eroticonly.com/autologin/14">
+              <span class="material-icons">star</span>
+              <span>SadoOnly Creators</span></a>
+          </li>
+
+          <li onlyGuest class="d-lg-none"><a class="log" routerLink="/member-login">{{ t('header.login') }}</a></li>
+        }
+        <li class="d-lg-none">
+            <app-language-switcher></app-language-switcher>
+        </li>
+      </ul>
+    </div>
+
+    <div class="d-flex nav-end user-tools" >
+        <span class="d-none d-lg-inline">
+            <app-language-switcher></app-language-switcher>
+        </span>
+
+
+      @if (isAuth()) {
+        @if (isAuthMember()) {
+          <div class="tokens me-3">
+            <a [href]="tokensTopUp" target="_blank">
+              <i class="material-icons tokens-icon me-2">generating_tokens</i>
+              <span class="tokens-amount">{{coinAmount()}}</span>
+            </a>
+          </div>
+        }
+
+        <a [appToggleMenu]="navEndItems" class="cursor-pointer me-2">{{ t('header.myAccount') }}</a>
+        <ul class="dropdown"  #navEndItems>
+          @if (isAuthPerformer()) {
+            <li><a routerLink="/performer-profile">profile</a></li>
+            <li><a routerLink="/performer-portfolio">portfolio</a></li>
+          } @else {
+            <li><a href="https://network.eroticonly.com/profile" target="_blank">{{ t('header.eoProfile') }}</a></li>
+          }
+          <li><a class="log" (click)="logOut.emit()">{{ t('header.logout') }}</a></li>
+        </ul>
+      } @else {
+        <ul class="naw-end-items">
+          <li class="d-none d-lg-inline"><a class="log" routerLink="/member-login">{{ t('header.login') }}</a></li>
+          <li><a class="log btn btn-main" [href]="signupUrl">{{ t('join') }}</a></li>
+        </ul>
+      }
+    </div>
+</div>

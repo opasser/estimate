@@ -1,0 +1,29 @@
+.performer-card {
+  cursor: pointer;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.performer-status.active {
+  position: absolute;
+  top: 0.9rem;
+  left: 0.9rem;
+  width: 62px;
+  height: 23px;
+  background: url('/img/performers-showcase/status-active.webp');
+  background-size: contain;
+}
+
+.image-container {
+  aspect-ratio: 4 / 3;
+  overflow-y: hidden;
+  font-size: 0;
+}
+
+@media (max-width: 992px) {
+  .performer-status.active {
+    width: 50px;
+    height: 19px;
+  }
+}

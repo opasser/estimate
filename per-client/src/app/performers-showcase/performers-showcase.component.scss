@@ -1,0 +1,48 @@
+.performer-card {
+  cursor: pointer;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.performer-status.active {
+  position: absolute;
+  top: 0.9rem;
+  left: 0.9rem;
+  width: 62px;
+  height: 23px;
+  background: url('/img/performers-showcase/status-active.webp');
+  background-size: contain;
+}
+
+.performer-exclusive {
+  position: absolute;
+  bottom: 0.1rem;
+  right: 0.9rem;
+  width: 115px;
+  height: 27px;
+  background: url('/img/performers-showcase/exclusive.webp');
+  background-size: contain;
+}
+
+.status-private {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  width: 62px;
+  height: 23px;
+  background: url('/img/performers-showcase/status-private.webp');
+  background-size: contain;
+}
+
+@media (max-width: 992px) {
+  .performer-status.active {
+    width: 50px;
+    height: 19px;
+  }
+
+  .performer-exclusive {
+    width: 80px;
+    height: 19px;
+  }
+}

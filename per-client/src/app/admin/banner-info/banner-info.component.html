@@ -1,0 +1,55 @@
+<div class="wrapper">
+  <div class="title">
+    {{ title }} id: {{ banner ? banner.id : 'new banner' }}
+  </div>
+
+  <div class="body">
+    <div class="image">
+      <app-avatar
+        (setFile)="setFile($event)"
+        [imageUrl]="bannerPath"
+      ></app-avatar>
+    </div>
+
+    <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <app-select
+        [control]="scope"
+        [label]="'scope'"
+        [type]="'text'"
+        [options]="bannerService.scopeArr"
+      ></app-select>
+
+      <app-select
+        [control]="section"
+        [label]="'section'"
+        [type]="'text'"
+        [options]="bannerService.sectionArr"
+      ></app-select>
+
+      <app-input
+        [control]="url"
+        [label]="'url'"
+        [type]="'text'"
+      ></app-input>
+
+      <app-input
+        [control]="alt"
+        [label]="'alt'"
+        [type]="'text'"
+      ></app-input>
+
+      <app-select
+        [control]="locale"
+        [label]="'Locale'"
+        [type]="'text'"
+        [placeholder]="''"
+        [options]="bannerService.localeList"
+        [isMultiple]="false"
+      ></app-select>
+    </form>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-main" (click)="onSubmit()" [disabled]="disable()">Submit</button>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+:host {
+    max-width: 450px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem;
+    background: #131313;
+}
+  

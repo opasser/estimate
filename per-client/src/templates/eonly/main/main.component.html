@@ -1,0 +1,27 @@
+@if (banners) {
+  @if(banners[sections.top]) {
+    <app-banner
+      [role]="role"
+      [banners]="banners[sections.top]"
+      [lang]="bannerService.curLang"
+    ></app-banner>
+  }
+
+  @if(banners[sections.mid]) {
+    <app-banner
+      [role]="role"
+      [banners]="banners[sections.mid]"
+      [lang]="bannerService.curLang"
+    ></app-banner>
+  }
+
+  @if(banners[sections.top]) {
+    <app-banner
+      [role]="role"
+      [banners]="banners[sections.bot]"
+      [lang]="bannerService.curLang"
+    ></app-banner>
+  }
+}
+
+<app-banner-text></app-banner-text>

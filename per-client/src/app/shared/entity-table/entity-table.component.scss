@@ -1,0 +1,48 @@
+.table-container {
+  margin: 20px;
+  position: relative;
+}
+
+.add-button {
+  background-color: #19945f;
+  font-weight: bold;
+  color: white;
+  border-radius: unset;
+  width: 150px;
+  margin-right: 20px;
+}
+
+.search-button {
+  background-color: #00a0b6;
+  font-weight: bold;
+  color: white;
+  border-radius: unset;
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.list-actions-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+.search-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+mat-form-field {
+  padding-left: 20px;
+}
+.reset-search {
+  cursor: pointer;
+  margin: 10px;
+}
+
+.search-form {
+  padding: 0;
+}

@@ -1,0 +1,10 @@
+:host {
+  margin-left: 20px;
+}
+
+@media (max-width: 576px) {
+  :host img{
+    max-width: 190px;
+    height: auto;
+  }
+}

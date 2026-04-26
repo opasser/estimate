@@ -1,0 +1,95 @@
+<div class="action-group">
+  <ng-content></ng-content>
+</div>
+  @if(itemsList()?.length) {
+    <div class="table-container">
+      <table mat-table [dataSource]="itemsList()">
+        <tr mat-header-row *matHeaderRowDef="displayedColumns()"></tr>
+
+        <tr mat-row *matRowDef="let row; columns: displayedColumns();"></tr>
+
+        @for (column of displayedColumns(); track $index) {
+          <ng-container [matColumnDef]="column">
+
+            <th mat-header-cell *matHeaderCellDef class="table-cell">
+              {{ column | title }}
+            </th>
+
+            <td mat-cell *matCellDef="let element" class="table-cell">
+              @switch (column) {
+                @case ('actions') {
+                  <div class="action-wrapper">
+                    @for (actionItem of actionList(); track actionItem) {
+                      <button mat-mini-fab [class]="actionItem.actionName" [matTooltip]="actionItem.tooltip">
+                        <mat-icon (click)="getAction.emit(
+                        {actionName: actionItem.actionName, value:element[actionItem.propertyName]}
+                        )">
+                          {{ actionItem.iconNane }}
+                        </mat-icon>
+                      </button>
+                    }
+                  </div>
+                }
+
+                @case ('avatarUrl') {
+                  <app-view-avatar [imageUrl]="element.avatarUrl" [width]="75"></app-view-avatar>
+                }
+                @case ('thumbnail') {
+                  <div class="align-flex-center">
+                    <app-view-avatar [imageUrl]="element.thumbnail" [width]="75"></app-view-avatar>
+                  </div>
+                }
+                @case ('imgPath') {
+                  <div class="align-flex-center">
+                    <app-view-avatar [imageUrl]="element.imgPath" [width]="75"></app-view-avatar>
+                  </div>
+                }
+                @case ('description') {
+                  <span matTooltip="{{ element.description }}" matTooltipPosition="above">
+                    {{ element.description | ellipsis:80 }}
+                  </span>
+                }
+                @case ('createdAt') {
+                  {{ element.createdAt | date: dateFormat | empty }}
+                }
+                @case ('updatedAt') {
+                  {{ element.updatedAt | date: dateFormat | empty }}
+                }
+                @case ('lastLogin') {
+                  {{ element.lastLogin | date: dateFormat | empty }}
+                }
+                @case ('startTime') {
+                  {{ element.startTime | date: dateFormat | empty }}
+                }
+                @case ('endTime') {
+                  {{ element.endTime | date: dateFormat | empty }}
+                }
+                @case ('date') {
+                  {{ element.date | date: dateFormat | empty }}
+                }
+                @case ('isPublic') {
+                  @if (element.isPublic) {
+                    <mat-icon [style.color]="'green'">done_outline</mat-icon>
+                  } @else {
+                    <mat-icon [style.color]="'red'">person_off</mat-icon>
+                  }
+                }
+                @case ('sum') {
+                  {{ element.sum | currency }}
+                }
+                @case ('amount') {
+                  {{ element.amount | currency }}
+                }
+
+                @default {
+                  {{ element[column] | empty }}
+                }
+              }
+            </td>
+          </ng-container>
+        }
+      </table>
+    </div>
+  } @else if (itemsList()?.length === 0) {
+    <div class="no-data align-flex-center"> no data </div>
+  }

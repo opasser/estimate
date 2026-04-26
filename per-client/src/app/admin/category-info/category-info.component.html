@@ -1,0 +1,63 @@
+<div class="wrapper">
+  <div class="title">
+    <div>{{ formTitle }} id: {{category ? category.id : 'new' }}</div>
+  </div>
+
+  <div class="body">
+    <app-avatar (setFile)="setFile($event)"
+                [imageUrl]="categoryUrl"
+                [height]="300"
+                [width]="300"
+    ></app-avatar>
+
+    <form [formGroup]="form">
+      <app-input
+        [control]="name"
+        [label]="'Name'"
+        [type]="'text'"
+        [placeholder]="''"
+      ></app-input>
+
+      <app-input
+        [control]="title"
+        [label]="'Title'"
+        [type]="'text'"
+        [placeholder]="''"
+      ></app-input>
+
+      <app-text-aria
+        [control]="description"
+        [label]="'Description'"
+        [type]="'text'"
+      ></app-text-aria>
+
+      <app-input
+        [control]="seoTitle"
+        [label]="'Seo title'"
+        [type]="'text'"
+      ></app-input>
+
+      <app-text-aria
+        [control]="seoDescription"
+        [label]="'Seo description'"
+        [type]="'text'"
+      ></app-text-aria>
+
+      <app-input
+        [control]="seoKeywords"
+        [label]="'Seo keywords'"
+        [type]="'text'"
+      ></app-input>
+
+      <app-input
+        [control]="seoH1"
+        [label]="'seoH1'"
+        [type]="'text'"
+      ></app-input>
+    </form>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-main" (click)=onSubmit() [disabled]="disable()">Submit</button>
+  </div>
+</div>

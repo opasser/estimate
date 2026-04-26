@@ -1,0 +1,13 @@
+:host {
+  img {
+    margin-top: 10px;
+  }
+  
+  @media (max-width: 576px) {
+    margin-left: 0;
+  }
+
+  @media (min-width: 992px) {
+    margin-left: 20px;
+  }
+}

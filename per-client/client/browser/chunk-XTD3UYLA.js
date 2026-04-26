@@ -1,0 +1,1 @@
+import{a as c}from"./chunk-5XHAPUN6.js";import{Aa as a,_ as r,ba as o,da as i}from"./chunk-5XXJZWT2.js";var m=new o("ApiUrl"),n=class e extends c{apiType=i(m);static \u0275fac=(()=>{let t;return function(p){return(t||(t=a(e)))(p||e)}})();static \u0275prov=r({token:e,factory:e.\u0275fac})};export{m as a,n as b};

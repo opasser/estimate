@@ -1,0 +1,49 @@
+<div class="label">{{ tagName() }}</div>
+<div class="expanding-container" [style.height]="isPanelOpen() ? '100%' : 'auto'">
+  <div class="header" (click)="updateState()">
+    @if (control().value.length > 0) {
+      <div class="chip-grid">
+        @for (category of control().value; track category) {
+          <span class="chip">{{ category }}</span>
+        }
+      </div>
+    } @else {
+      <span class="no-category">No {{ tagName() }} added</span>
+    }
+
+    <div class="header-actions">
+      <i class="material-icons">
+        {{ isPanelOpen() ? 'expand_less' : 'expand_more' }}
+      </i>
+    </div>
+  </div>
+
+  @if (isPanelOpen()) {
+    <div class="body">
+      <div class="chip-grid">
+        @for (category of categorySearch(); track category) {
+          <div class="chip">
+            <input type="checkbox"
+              [checked]="control().value.includes(category)"
+              (change)="toggleCategory(category)"
+            />
+            <span>{{ category }}</span>
+          </div>
+        }
+      </div>
+
+      <div class="new-category-container">
+        <mat-form-field class="new-category" appearance="outline">
+          <mat-label>Search category</mat-label>
+          <input matInput type="text" [(ngModel)]="searchCategory" />
+        </mat-form-field>
+
+        @if (addItem()) {
+          <button class="btn btn-main" (click)="addCategory()" type="submit">
+            Add category
+          </button>
+        }
+      </div>
+    </div>
+  }
+</div>

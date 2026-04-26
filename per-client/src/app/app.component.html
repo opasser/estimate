@@ -1,0 +1,24 @@
+<div class="app-wrapper">
+  @defer () {
+    <app-header
+      class="header"
+      [isAuth]="authService.isAuthUser"
+      [isAdminAuth]="authService.isAuthAdmin"
+      [isAuthPerformer]="authService.isAuthPerformer"
+      [isAuthMember]="authService.isAuthMember"
+      [coinAmount]="coinAmount()"
+      (logOut)="logOut()"
+    >
+    </app-header>
+  }
+
+  @defer (){
+    <main class="main-content" [class]="{'admin-content': authService.isAuthAdmin}">
+      <router-outlet (activate)="activate($event)"></router-outlet>
+    </main>
+  }
+
+  @defer () {
+    <app-footer [isAdminAuth]="authService.isAuthAdmin"></app-footer>
+  }
+</div>

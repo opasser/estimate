@@ -1,0 +1,15 @@
+<div class="masonry">
+  @for (img of gallery(); track img) {
+    <div class="item">
+      <a data-fancybox="gallery" [href]="img.imagePath | cdn">
+        <img class="masonry-img"
+             [src]="img.thumbnailPath | cdn"
+             [width]="img.thumbW"
+             [height]="img.thumbH"
+             alt="performer"
+             loading="lazy"
+        />
+      </a>
+    </div>
+  }
+</div>

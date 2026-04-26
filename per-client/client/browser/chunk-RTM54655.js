@@ -1,0 +1,1 @@
+import{Ub as t,Vb as n,qb as a,vc as s}from"./chunk-5XXJZWT2.js";import"./chunk-7CGTOI24.js";var d=class o{static \u0275fac=function(e){return new(e||o)};static \u0275cmp=a({type:o,selectors:[["app-dashboard"]],decls:2,vars:0,template:function(e,r){e&1&&(t(0,"p"),s(1,"admin dashboard works!"),n())},encapsulation:2})};export{d as DashboardComponent};

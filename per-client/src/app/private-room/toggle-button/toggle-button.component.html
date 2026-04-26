@@ -1,0 +1,21 @@
+<div class="main-container">
+  <p class="label">{{ label() }}:</p>
+
+  <div class="checkbox-container">
+    <input
+      type="checkbox"
+      class="toggle-checkbox"
+      [checked]="checked()"
+      #checkboxItem
+      (change)="changed.emit(checkboxItem.checked)"
+      hidden
+    />
+    <div class="toggle-container" (click)="checkboxItem.click()">
+      <div class="toggle-button-switch"></div>
+      <div class="toggle-button-text">
+        <span class="on">ON</span>
+        <span class="off">OFF</span>
+      </div>
+    </div>
+  </div>
+</div>

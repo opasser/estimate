@@ -1,0 +1,8 @@
+<footer class="footer-container">
+  @if (isAdminAuth()) {
+    <small>powered by </small><a href="https://bunny-cms.com/" target="_blank"><small>Bunny CMS</small></a>
+  } @else {
+    <a routerLink="/"><img src="img/logo.webp" alt=""/></a><br>
+    <small>powered by </small><a href="https://bunny-cms.com/" target="_blank"><small>Bunny CMS</small></a>
+  }
+</footer>

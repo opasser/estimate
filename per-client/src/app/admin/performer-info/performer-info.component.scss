@@ -1,0 +1,71 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+  padding: 1rem;
+}
+
+.toggle-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 12px 10px;
+  border: 1px solid #75777f;
+  border-radius: 5px;
+  height: 32px;
+  justify-content: space-between;
+  margin-bottom: 35px;
+}
+
+.title {
+  text-align: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 1rem;
+  gap: 1.5rem;
+  color: #75777f;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #faf9fd;
+  flex: 1
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.segment {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+app-avatar {
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+form {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 10px;
+}
+
+.segment:nth-of-type(2) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 10px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}

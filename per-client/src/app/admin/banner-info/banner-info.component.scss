@@ -1,0 +1,42 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+  padding: 1rem;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 1rem;
+  gap: 1.5rem;
+  color: #75777f;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #faf9fd;
+  flex: 1
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+form {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 10px;
+}
+
+.title {
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}

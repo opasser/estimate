@@ -1,0 +1,26 @@
+<div class="avatar-wrapper">
+  <div class="image-block" [style.height.px]="height()" [style.width.px]="width()">
+    @if (selectedImageUrl) {
+      <img [src]="selectedImageUrl" title="Profile Picture" alt="Profile Picture"/>
+    } @else {
+      <div class="no-icon">
+        <i class="material-icons">add_photo_alternate</i>
+      </div>
+    }
+  </div>
+
+  <input class="upload-input"
+         type="file"
+         (change)="onFileSelected($event)"
+         #fileUpload>
+
+  <div class="file-name-block">
+    @if (fileError()) {
+      <p class="error-message">Error: Invalid file format.</p>
+    }
+  </div>
+
+  <div class="button-block">
+    <button class="btn btn-main" (click)="fileUpload.click()">Chose image</button>
+  </div>
+</div>

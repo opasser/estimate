@@ -1,0 +1,25 @@
+<div class="table-container">
+    <app-item-table
+      (getAction)="getAction($event)"
+      [actionList]="actionsList"
+      [itemsList]="itemsList"
+      [displayedColumns]="displayedColumns"
+    >
+
+    <div class="list-actions-wrapper">
+      @if (addButtonName) {
+        <button mat-fab (click)="addItem()" class="add-button">
+          {{addButtonName}}
+        </button>
+      }
+
+      <mat-form-field class="search-form">
+        <mat-label>Search</mat-label>
+          <i matSuffix class="material-icons reset-search" (click)="resetSearch()">close</i>
+        <input matInput [formControl]="searchControl" #input>
+      </mat-form-field>
+    </div>
+
+    </app-item-table>
+  <mat-paginator [length]="resultsLength" [pageSize]="PAGE_SIZE"></mat-paginator>
+</div>

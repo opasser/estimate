@@ -1,0 +1,84 @@
+@defer (when deferFlag()) {
+  <div>
+    @if (streamData?.videoStreamUrl) {
+      <div onlyMember #streamContainer class="mb-3">
+        <iframe allow="autoplay *; fullscreen *; camera *; microphone *;"
+                [src]="streamData?.videoStreamUrl"
+        >
+        </iframe>
+      </div>
+    }
+
+    @if (!roomData?.isRoomOnline || !authService.isAuthMember) {
+      <perf-room-pseudo-stream
+        [status]="(roomData?.isRoomOnline) ? 'online' : 'offline'"
+        [performerName]="roomData?.performerName">
+      </perf-room-pseudo-stream>
+    }
+
+    <div class="d-flex px-2 mb-1">
+      <div class="me-3 avatar">
+        <img
+          [src]="roomData?.profileThumbnail | vImageUrl"
+          [style.max-width.px]="75"
+          class="img-fluid"
+          [alt]="roomData?.performerName"
+        />
+      </div>
+
+      <div>
+        <h1>{{ roomData?.performerName }}</h1>
+        <div onlyMember class="d-flex align-items-center">
+          <mat-icon class="performer-status-{{ roomData?.isRoomOnline ? 'online' : 'offline' }} me-2">videocam</mat-icon>
+          <small>{{ roomData?.isRoomOnline ? 'online' : 'offline' }}</small>
+        </div>
+
+        <div onlyGuest class="d-flex align-items-center">
+          <mat-icon class="performer-status-{{ roomData?.isRoomOnline ? 'online' : 'offline' }} me-2">videocam</mat-icon>
+          <small>{{ roomData?.isRoomOnline ? 'online' : 'offline'}}</small>
+        </div>
+      </div>
+
+      <div onlyGuest class="ms-auto">
+        <div class="join d-none d-sm-block">
+          <a [href]="signupUrl" class="btn btn-lg btn-main text-uppercase">{{ "join" | transloco}}</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row px-2">
+      <div class="col-lg-30 mb-3">
+        <vision-profile [profile]="profile"></vision-profile>
+      </div>
+      <div class="col-lg-70 mb-3">
+        <div class="tabs">
+          @for (tab of tabs; track tab; let i = $index) {
+            <button
+              (click)="activeTab.set(i)"
+              class="btn"
+              [ngClass]="{ 'btn-main': activeTab() === i, 'btn-outline-main': activeTab() !== i }">
+              {{ tab.label | transloco }}
+            </button>
+          }
+        </div>
+
+        <div class="tab-content">
+          @switch (activeTab()) {
+            @case (0) {
+              <vision-gallery
+                [performers]="gallery()"
+                [assetType]="'Images'"
+              ></vision-gallery>
+            }
+            @case (1) {
+              <vision-gallery
+                [performers]="gallery()"
+                [assetType]="'Videos'"
+              ></vision-gallery>
+            }
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+}

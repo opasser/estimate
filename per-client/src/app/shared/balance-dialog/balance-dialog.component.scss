@@ -1,0 +1,62 @@
+a {
+  all: unset;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.action-icon {
+  transform: scale(3);
+}
+
+
+.card {
+  max-width: 400px;
+  border: 1px solid #ccc;
+  padding: 16px;
+  background: #fff;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  margin-bottom: 12px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.card-subtitle {
+  font-size: 14px;
+  color: #666;
+  padding: 10px;
+}
+
+.card-content {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.piggy-link {
+  text-decoration: none;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #0056b3;
+}

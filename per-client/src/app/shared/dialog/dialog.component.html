@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">{{ data.title }}</div>
+    <div class="card-subtitle">
+      {{ data.text }}
+    </div>
+  </div>
+  <div class="card-content">
+<!--    {{ data.text }}-->
+  </div>
+
+  <div class="card-actions">
+    @if (Boolean(data?.confirmButton)) {
+      <button class="1 btn" (click)="confirm()">{{ data?.confirmButton}}</button>
+    }
+
+    @if (Boolean(data?.cancelButton)) {
+      <button class="2 btn" (click)="closeDialog()">{{ data?.cancelButton }}</button>
+    }
+  </div>
+</div>

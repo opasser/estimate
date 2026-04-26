@@ -1,0 +1,1 @@
+import{a as e}from"./chunk-LUCXI5XX.js";import{tb as n}from"./chunk-5XXJZWT2.js";var t=class i{transform(r){return r?`${e.cdnUrl||e.domainName}${r.trim()}`:"img/no-avatar.webp"}static \u0275fac=function(m){return new(m||i)};static \u0275pipe=n({name:"cdn",type:i,pure:!0})};export{t as a};

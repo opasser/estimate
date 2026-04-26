@@ -1,0 +1,11 @@
+<div class="video-container">
+  <div class="video-wrapper">
+    <video id="localVideo" playsinline webkit-playsinline autoplay controls [muted]="'muted'"></video>
+  </div>
+
+  <div class="action-group">
+    <div class="stream-status">Stream status: {{status()}}</div>
+
+    <ng-content></ng-content>
+  </div>
+</div>

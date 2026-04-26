@@ -1,0 +1,58 @@
+.avatar-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-block {
+  display: flex;
+  justify-content: center;
+}
+
+.image-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid #75777f;
+  margin-bottom: 20px;
+    img{
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+}
+
+.upload-input {
+  display: none;
+}
+
+.file-name {
+  display: block;
+  white-space: nowrap;
+  overflow: auto;
+  max-width: 100%;
+}
+
+.file-name-block {
+  align-items: center;
+}
+
+.error-message {
+  color: #ba1a1a;
+  font-size: 14px;
+}
+
+.no-icon {
+  height: 200px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+    i {
+      scale: 3;
+    }
+}

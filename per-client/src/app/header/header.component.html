@@ -1,0 +1,75 @@
+<header class="naw-container">
+  <div class="hamburger" [appToggleMenu]="navItems">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <a routerLink="/"><app-inc-logo></app-inc-logo></a>
+
+  <ul class="naw-items" #navItems>
+    @if (isAdminAuth()) {
+      <li>
+        <a routerLink="/admin"
+           routerLinkActive="active-link"
+           [routerLinkActiveOptions]="{exact: true}">
+          Dashboard
+        </a>
+      </li>
+      <li><a routerLink="/admin/admins" routerLinkActive="active-link">Admins</a></li>
+      <li><a routerLink="/admin/performers" routerLinkActive="active-link">Performers</a></li>
+      <li><a routerLink="/admin/streams" routerLinkActive="active-link">Streams</a></li>
+      <li><a routerLink="/admin/members" routerLinkActive="active-link">Members</a></li>
+      <li><a routerLink="/admin/payments" routerLinkActive="active-link">Payments</a></li>
+      <li><a routerLink="/admin/categories" routerLinkActive="active-link">Categories</a></li>
+      <li><a routerLink="/admin/categories" routerLinkActive="active-link">Categories</a></li>
+      <li><a routerLink="/admin/tags" routerLinkActive="active-link">Tags</a></li>
+      <li><a routerLink="/admin/banners" routerLinkActive="active-link">Banners</a></li>
+    } @else if (isAuthPerformer()) {
+      <li><a routerLink="/performer" routerLinkActive="active-link">Performer</a></li>
+      <li><a routerLink="/performer-balance" routerLinkActive="active-link">Accrued wages</a></li>
+      <li><a routerLink="/performer-payout" routerLinkActive="active-link">Payouts</a></li>
+      <li><a routerLink="/performer-payments" routerLinkActive="active-link">Payments</a></li>
+    } @else {
+        <li><a routerLink="/performers" routerLinkActive="active-link">Models</a></li>
+      @if (!isAuth()) {
+        <li><a class="log d-lg-none" routerLink="/performer-login">Performer Login</a></li>
+      }
+    }
+  </ul>
+
+  <div class="ms-auto nav-end">
+    @if (isAuthPerformer()) {
+      <a  [appToggleMenu]="navEndItems">My Account</a>
+      <ul class="dropdown"  #navEndItems>
+        <li><a routerLink="/performer-profile">profile</a></li>
+        <li><a routerLink="/performer-portfolio">portfolio</a></li>
+        <li><a class="log" (click)="logOut.emit()">log out</a></li>
+      </ul>
+    } @else if (isAuthMember()) {
+      <div class="member-profile-wrapper">
+        <div class="tokens">
+          <a [href]="tokensTopUp" target="_blank">
+            <i class="material-icons tokens-icon">generating_tokens</i>
+            <p class="tokens-amount">{{coinAmount()}}</p>
+          </a>
+        </div>
+
+        <a [appToggleMenu]="navEndItems">My Account</a>
+        <ul class="dropdown"  #navEndItems>
+          <li><a class="log" (click)="logOut.emit()">log out</a></li>
+        </ul>
+      </div>
+    } @else if (isAuth()) {
+      <a  [appToggleMenu]="navEndItems">My Account</a>
+      <ul class="dropdown"  #navEndItems>
+        <li><a class="log" (click)="logOut.emit()">log out</a></li>
+      </ul>
+    } @else {
+      <ul class="naw-end-items">
+        <li><a class="d-none d-lg-flex" routerLink="/performer-login">Performer Login</a></li>
+        <li><a class="log" routerLink="/member-login">Login</a></li>
+      </ul>
+    }
+  </div>
+</header>

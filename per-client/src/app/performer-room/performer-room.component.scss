@@ -1,0 +1,133 @@
+.performer-status-online, .performer-status-active {
+  color: #11e615;
+}
+
+.performer-status-offline, .performer-status-finished {
+  color: #f90505
+}
+
+.avatar img {
+  max-width: 30px;
+}
+
+.join {
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .join {
+    display: block;
+  }
+
+  .col-lg-30 {
+    position: relative;
+  }
+}
+
+.chat-main-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.tabs-wrapper {
+  display: flex;
+  margin: 0 0 0.2rem;
+  position: relative;
+}
+
+@media (min-width: 992px) { 
+  .tabs-wrapper {
+    margin: 0 .5rem 0.2rem;
+  }
+}
+
+.tab {
+  padding: 10px;
+  text-align: center;
+  flex: 1;
+  background-color: white;
+  color: var(--chat-msg-color);
+  cursor: pointer;
+}
+
+.chat-wrappers {
+  flex-grow: 1;
+  position: relative;
+}
+
+.private {
+  background-color: var(--chat-private-bg);
+}
+
+.tips {
+  background-color: none;
+  color: #131313;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.public {
+  background-color: var(--chat-public-bg);
+}
+
+.payment-wrapper {
+  display: none;
+  position: absolute;
+  right: 3px;
+  top: 43px;
+  z-index: 1;
+  color: #fff;
+  padding: .5rem;
+  margin: 0;
+  text-align: center;
+  background-color: #333;
+  width: 100px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.9);
+
+  li {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+}
+.payment-wrapper.active {
+  display: block;
+}
+
+.token {
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  border: 5px solid #ffc60a;
+  background-color: #e8b923;
+  border-radius: 50%;
+  color: #FFEE99;
+  transition: transform 0.15s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.token:hover {
+  transform: scale(2);
+}
+
+.private-session {
+  scale: 1.5;
+}
+
+.privacy-status-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 25px;
+  font-weight: bold;
+  background-color: #5dade2;
+  border: 1px solid green;
+  padding: 5px;
+  margin-bottom: 10px;
+}

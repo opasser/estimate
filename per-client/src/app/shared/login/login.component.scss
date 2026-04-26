@@ -1,0 +1,23 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.form-wrapper {
+  border-radius: 0;
+  min-width: 300px;
+  position: relative;
+  background-color: #4f4d4d;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  margin-top: 20px;
+}

@@ -1,0 +1,10 @@
+<div class="row">
+  @for (category of (categoryList$ | async) ; track category.id) {
+    <div class="performer-card" (click)="goToPerformer(category.name)">
+      <app-view-avatar
+        [imageUrl]="category.thumbnail"
+      ></app-view-avatar>
+      <h3 class="h5">{{ category.name }}</h3>
+    </div>
+  }
+</div>

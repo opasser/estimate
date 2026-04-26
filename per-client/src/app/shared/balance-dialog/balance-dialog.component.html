@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-header">
+    <div class="card-title">Not enough balance</div>
+    <div class="card-subtitle">
+      Click on the image below to top up your account
+    </div>
+  </div>
+  <div class="card-content">
+    <a [href]="tokensTopUp" target="_blank" rel="noopener noreferrer" class="piggy-link">
+      <i class="material-icons action-icon">account_balance_wallet</i>
+    </a>
+  </div>
+  <div class="card-actions">
+    <button class="btn" (click)="closeDialog()">Close</button>
+  </div>
+</div>

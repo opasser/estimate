@@ -1,0 +1,40 @@
+@if (banners) {
+  @if(banners[sections.cus]) {
+    <app-banner
+      [role]="role"
+      [banners]="banners[sections.cus]"
+      [lang]="bannerService.curLang"
+
+    ></app-banner>
+  }
+}
+
+<div class="row">
+  @for (room of (rooms$ | async) ; track room) {
+    @if (Boolean(room['nickName'])) {
+      <div class="col-6 col-md-4 col-lg-20 performer-card" (click)="goToRoom(room)">
+        <div class="position-relative">
+          <app-view-avatar [imageUrl]="room.avatarUrl"></app-view-avatar>
+          <!--div class="performer-exclusive"></div-->
+        </div>
+        <h3 class="h5">{{ room.nickName }}</h3>
+
+        <div class="performer-status" [class.active]="isActive(room)"></div>
+        @if (room?.privacy === 'private') {
+          <div class="status-private"></div>
+        }
+      </div>
+    } @else if (Boolean(room['performerName'])) {
+      <div class="col-6 col-md-4 col-lg-20 performer-card" (click)="goToVRoom(room)">
+        <div class="image-container mb-1">
+          <img [src]="room.assetFilePath | vImageUrl : 350" alt="{{room.performerName}}" loading="lazy" class="img-fluid">
+        </div>
+        <h3 class="h5">{{room.performerName}}</h3>
+        <div class="performer-status"
+             [class.active]="room.isRoomOnline">
+        </div>
+      </div>
+    }
+  }
+</div>
+

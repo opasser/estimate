@@ -1,0 +1,1 @@
+import{qb as o}from"./chunk-5XXJZWT2.js";import"./chunk-7CGTOI24.js";var t=class e{static \u0275fac=function(n){return new(n||e)};static \u0275cmp=o({type:e,selectors:[["app-bs-token-login"]],decls:0,vars:0,template:function(n,i){},encapsulation:2})};export{t as BsTokenLoginComponent};

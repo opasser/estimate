@@ -1,0 +1,32 @@
+.video-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .video-wrapper {
+    width: 100%;
+    video {
+      width: 100%;
+      aspect-ratio: 905 / 509;
+    }
+  }
+  
+  .action-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .stream-status {
+    background-color: cadetblue;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+  }
+}
+

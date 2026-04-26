@@ -1,0 +1,12 @@
+.performer-card {
+  cursor: pointer;
+  width: 50%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+@media (min-width: 992px) {
+  .performer-card {
+    width: 20%;
+  }
+}

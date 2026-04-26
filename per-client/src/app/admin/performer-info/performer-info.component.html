@@ -1,0 +1,133 @@
+<div class="wrapper">
+  <div class="title">
+    {{ title }} id: {{ performer ? performer.id : 'new' }}
+  </div>
+
+  <div class="body">
+    <div class="segment">
+      <app-avatar
+        (setFile)="setFile($event)"
+        [imageUrl]="avatarUrl"
+        [height]="300"
+        [width]="300"
+      ></app-avatar>
+
+      <form [formGroup]="form">
+        <app-input
+          [control]="name"
+          [label]="'Name'"
+          [type]="'text'"
+          [placeholder]="'qwerty'"
+        ></app-input>
+
+        <app-input
+          [control]="nickName"
+          [label]="'Nick name'"
+          [type]="'text'"
+          [placeholder]="'qwerty'"
+          [errorName]="'pattern'"
+          [errorMessage]="'Nickname can only contain letters, numbers, dashes, and underscores'"
+        ></app-input>
+
+        <app-input
+          [control]="email"
+          [label]="'Email'"
+          [type]="'text'"
+          [placeholder]="'name@email.com'"
+          [errorMessage]="'Please enter a valid email address'"
+          [errorName]="'email'"
+        ></app-input>
+
+        <app-input
+          [control]="password"
+          [label]="'Password'"
+          [type]="'text'"
+          [placeholder]="'qwerty12345'"
+        ></app-input>
+
+        <app-input
+          [control]="paymentRate"
+          [label]="'Payment rate'"
+          [type]="'number'"
+          [placeholder]="'50'"
+          [errorName]="'invalidInteger'"
+          [errorMessage]="'Should be integer number'"
+        ></app-input>
+
+        <app-input
+          [control]="c2cAmount"
+          [label]="'c2c amount'"
+          [type]="'text'"
+          [placeholder]="'1.00'"
+          [errorName]="'invalidDecimal'"
+          [errorMessage]="'Format should be 00.00'"
+        ></app-input>
+
+        <app-select
+          [control]="gender"
+          [label]="'Gender'"
+          [type]="'text'"
+          [placeholder]="''"
+          [options]="performerService.genderList"
+        ></app-select>
+
+        <app-input
+          [control]="sexualOrientation"
+          [label]="'Sexual orientation'"
+          [type]="'text'"
+          [placeholder]="'Straight'"
+        ></app-input>
+
+        <app-input
+          [control]="bodyType"
+          [label]="'Body type'"
+          [type]="'text'"
+          [placeholder]="'Skinny'"
+        ></app-input>
+
+        <app-select
+          [control]="language"
+          [label]="'Language'"
+          [type]="'text'"
+          [placeholder]="''"
+          [options]="performerService.languageList"
+          [isMultiple]="true"
+        ></app-select>
+
+        <app-date-picker
+          [control]="birthday"
+          [label]="'Birthday'"
+          [type]="'text'"
+          [placeholder]="''"
+          [errorName]="'invalidAge'"
+          [errorMessage]="'Age must be 18+'"
+        ></app-date-picker>
+
+        <div class="toggle-wrapper">
+          <span class="toggle-label">Is public:</span>
+          <mat-slide-toggle
+            formControlName="isPublic"
+            [checked]="performer ? performer?.isPublic : false"
+          ></mat-slide-toggle>
+        </div>
+
+        <app-text-aria
+          [control]="about"
+          [label]="'About performer'"
+          [type]="'text'"
+          [placeholder]="''"
+        ></app-text-aria>
+      </form>
+    </div>
+
+    <div class="segment">
+      <app-category [control]="category"></app-category>
+
+      <app-tag [control]="tag"></app-tag>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-main" (click)="onSubmit()" [disabled]="disable()">Submit</button>
+  </div>
+</div>

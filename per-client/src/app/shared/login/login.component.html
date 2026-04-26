@@ -1,0 +1,38 @@
+<mat-card class="form-wrapper">
+  <mat-card-header>
+    <mat-card-title>{{ title }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="content">
+    <form class="form-group" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <app-input
+        [control]="email"
+        [label]="'email'"
+        [type]="'text'"
+        [placeholder]="'name@.email.com'"
+        [errorMessage]="'Please enter a valid email address'"
+        [errorName]="'email'"
+      ></app-input>
+
+      <app-input
+        [control]="password"
+        [label]="'password'"
+        [type]="'password'"
+        [placeholder]="'qwerty12345'"
+      ></app-input>
+    </form>
+  </mat-card-content>
+  <mat-card-actions class="action-group" align="end">
+    <button (click)=onSubmit() type="submit" [disabled]="disable()" class="btn btn-main">Submit</button>
+  </mat-card-actions>
+</mat-card>
+
+<!--<div>-->
+<!--  <button (click)="clearToken()">-->
+<!--    clear token-->
+<!--  </button>-->
+
+<!--  <button (click)="login()">-->
+<!--    Login-->
+<!--  </button>-->
+<!--</div>-->
+

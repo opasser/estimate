@@ -1,0 +1,134 @@
+  .pseudo-online,
+  .pseudo-offline {
+    box-sizing: border-box;  
+  }
+
+  @media (min-width: 992px) {
+    .pseudo-online,
+    .pseudo-offline {
+      padding-left: 0.5rem !important;
+    }
+  }
+  
+  .player {
+    aspect-ratio: 16/9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+  }
+
+  .stream-status {
+    background-color: #7f7f7f;
+    color: #FFF;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .pseudo-offline .stream-status {
+    background-color: #7f7f7f;
+  }
+
+  .pseudo-online .stream-status {
+    background-color: cadetblue;
+  }
+
+  .chat-main-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (max-width: 992px) { // hide for mobile
+    .chat-main-container {
+      display: none;
+    }
+  }
+
+  .tabs-wrapper {
+    display: flex;
+    margin: 0 .5rem 0.2rem;
+  }
+
+  .tab {
+    padding: 10px;
+    text-align: center;
+    flex: 1;
+    background-color: white;
+    color: var(--chat-msg-color);
+    cursor: pointer;
+  }
+
+  .chat-wrappers {
+    flex-grow: 1;
+    position: relative;
+  }
+
+  .private {
+    background-color: var(--chat-private-bg);
+  }
+
+  .pseudo-offline .public {
+    background-color: #787878;
+  }
+  .pseudo-online .public {
+    background-color: var(--chat-public-bg);
+  }
+
+  .text-input {
+    width: 100%;
+    margin-right: 2px;
+    resize: none;
+    border-radius: 3px;
+  }
+  
+  .enter-text-container {
+    height: 45px;
+    display: flex;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  .chat-container {
+    margin: 0 0.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column-reverse; // mobile, show reverse chat
+    border: 1px solid black;
+    background-color: var(--chat-bg-color);
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  
+  .chat-view {
+    min-height: 300px;
+    overflow-y: auto;
+    flex-grow: 1;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  .pseudo-offline .enter-text-container button {
+    background-color: #787878;
+    border-color: #787878;
+  }
+  
+  .bottom-button {
+    font-size: 1.25rem;
+  }
+  
+  @media (min-width: 1200px) {
+    .bottom-button {
+      padding-top: 0 !important;
+      padding-bottom: 0 !important;
+      font-size: 1.75rem !important;
+      letter-spacing: 2px;
+    }
+  }

@@ -1,0 +1,35 @@
+<div class="wrapper">
+  <div class="title">
+    <div>{{ title }} id: {{admin ? admin.id : 'new' }}</div>
+  </div>
+
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <app-input
+        [control]="name"
+        [label]="'name'"
+        [type]="'text'"
+        [placeholder]="'qwerty'"
+      ></app-input>
+
+      <app-input
+        [control]="email"
+        [label]="'email'"
+        [type]="'text'"
+        [placeholder]="'name@.email.com'"
+        [errorMessage]="'Please enter a valid email address'"
+        [errorName]="'email'"
+      ></app-input>
+
+      <app-input
+        [control]="password"
+        [label]="'password'"
+        [type]="'text'"
+        [placeholder]="'qwerty12345'"
+      ></app-input>
+  </form>
+
+  <div class="actions">
+    <button class="btn btn-main" (click)=onSubmit() type="submit" [disabled]="disable()">Submit</button>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="profile-card">
+  @for (profile of profile() | keyvalue; track profile.key) {
+    <p><strong>{{ `profile.${profile.key}` | transloco }}</strong> : {{ profile.value }}</p>
+  } @empty {
+    <p><strong> No performer profile </strong></p>
+  }
+</div>

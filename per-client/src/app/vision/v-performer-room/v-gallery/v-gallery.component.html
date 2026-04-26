@@ -1,0 +1,26 @@
+<div class="masonry">
+  @for (performer of performers(); track performer.performerName) {
+    @if (assetType() === "Images" && checkAssetType(performer.assetType, "Images")) {
+      <div class="item">
+        <a data-fancybox="gallery" [href]="performer.assetFilePath | vImageUrl">
+          <img
+            [src]="performer.assetFilePath | vImageUrl : 300"
+            alt="performer"
+            loading="lazy"
+          />
+        </a>
+      </div>
+      } @else if (assetType() === "Videos" && checkAssetType(performer.assetType, "Videos")) {
+
+      <div class="item">
+        <a data-fancybox="gallery" [href]="performer.assetFilePath | vImageUrl">
+          <video class="img-fluid" controls [poster]="getPlaceholder(performer) | vImageUrl">
+            <source [src]="performer.assetFilePath | vImageUrl" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </a>
+      </div>
+      }
+  }
+</div>
+

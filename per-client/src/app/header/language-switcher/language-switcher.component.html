@@ -1,0 +1,18 @@
+@if (langList.length) {
+  <div class="language-selector-container" (click)="togglePanel()" [class.open]="panelOpen">
+    <div class="selected-value">{{ currentLang.toUpperCase() }}</div>
+
+    @if(panelOpen){
+      <div class="options-panel">
+        @for (lang of langList; track $index) {
+          <div
+            class="option"
+            [class.selected]="lang === currentLang"
+            (click)="selectLang(lang, $event)">
+            {{ lang.toUpperCase() }}
+          </div>
+        }
+      </div>
+  }
+  </div>
+}

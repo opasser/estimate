@@ -1,0 +1,75 @@
+
+  <div class="">
+    <h3>Cam To Cam with {{ participant.role === 'performer' ? prd.member.name : prd.performer.name }}</h3>
+    <div class="row mb-3">
+      <div class="col-lg-70">
+        <video id="privateRemoteVideo" #privateRemoteVideo playsinline webkit-playsinline autoplay controls class="mw-100"></video>
+        <video id="privateLocalVideo" playsinline webkit-playsinline autoplay controls [muted]="'muted'" class="mw-100 rounded"></video>
+      </div>
+
+      <div class="col-lg-30 chat-main-container">
+        <div class="tabs-wrapper">
+          <div class="tab active private">Chat</div>
+          @if (this.participant.role === 'member') {
+            <div class="tab tips" [appToggleMenu]="tipsMenu">Tip Me</div>
+            <ul class="payment-wrapper" #tipsMenu>
+              @for (coin of coinsArr; track coin) {
+                <li>
+                  <button class="token" (click)="sendTips(coin)" [disabled]="disableButton()">
+                    {{ coin }}
+                  </button>
+                </li>
+              }
+            </ul>
+          }
+        </div>
+        <div class="chat-wrappers">
+          <app-chat
+            (sentMessage)="sentMessage($event)"
+            [messages]="messages"
+            [participantId]="participant.id"
+            [isCommonRoom]="false"
+            [role]="participant.role"
+          ></app-chat>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-2">
+      <div class="col-12 col-lg-6 mx-auto">
+        <app-select-media-devices
+          [videoDeviceForm]="privateRtcAdaptorService.videoDeviceForm"
+          [audioDeviceForm]="privateRtcAdaptorService.audioDeviceForm"
+          [audioDevices]="privateRtcAdaptorService.audioDevices()"
+          [videoDevices]="privateRtcAdaptorService.videoDevices()"
+        >
+        </app-select-media-devices>
+      </div>
+      <div class="button-block text-center d-flex justify-content-center">
+        @defer (when privateRtcAdaptorService.initialized()) {
+          <div class="mx-1">
+            <app-toggle-button
+              [checked]="privateRtcAdaptorService.privateCam() !== 'OFF'"
+              [label]="'Cam'"
+              (changed)="camToggle($event)"
+            ></app-toggle-button>
+          </div>
+          
+          <div class="mx-1">
+            <app-toggle-button
+              [checked]="privateRtcAdaptorService.privateMic() !== 'OFF'"
+              [label]="'Mic'"
+              (changed)="micToggle($event)"
+            ></app-toggle-button>
+          </div>
+          
+          <button class="btn btn-sm btn-outline-main mx-2" (click)="leaveRoom()">Leave room</button>
+        }
+      </div>
+    </div>
+
+    <div class="text-center">
+      <small>If you don't have a video, please refresh the page.</small>
+    </div>
+  </div>
+

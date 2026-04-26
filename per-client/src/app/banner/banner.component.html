@@ -1,0 +1,26 @@
+@for(item of showBanners(); track item.id) {
+  <ng-container *ngTemplateOutlet="bannerTemplate; context: { $implicit: item }"></ng-container>
+}
+
+
+<ng-template #bannerTemplate let-item>
+  <div class="container-xxl text-center">
+    <a href="{{ item.url }}">
+      <picture>
+        <source
+          [srcset]="item.imgPath | cdn"
+          media="(max-width: 600px)"
+          [attr.width]="item.imgW"
+          [attr.height]="item.imgH">
+        <img
+          [src]="item.imgPath | cdn"
+          [alt]="item.alt"
+          [attr.width]="item.imgW"
+          [attr.height]="item.imgH"
+          class="img-fluid mx-auto d-block"
+          loading="lazy"
+          decoding="async">
+      </picture>
+    </a>
+  </div>
+</ng-template>

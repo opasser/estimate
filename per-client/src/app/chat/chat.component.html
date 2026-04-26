@@ -1,0 +1,49 @@
+<div class="chat-container">
+  <div class="chat-view" #chatView>
+    @for( message of messages(); track message ) {
+      @if (message.role === ACTION_TYPE_TIPS) {
+        @let messageArr = message.message.split(' ');
+        <div class="action-container">
+          <div>
+            {{ message.nickName}} sent
+          </div>
+
+          <div class="token">
+            {{ messageArr[2] }}
+          </div>
+
+          <div> tips </div>
+        </div>
+      } @else {
+        <div class="message-container" [class.private]="message.privacy === 'private'">
+          <div class="message-nickname" [class]="getParticipantColor(message)">
+          <span>
+            {{message.nickName}}:
+
+            @if (role() === ROLE_PERFORMER && message.privateTo) {
+                <span class="private-span">private to:</span> {{ message.privateTo }}
+            }
+          </span>
+
+            @if (isCommonRoom() &&  role() === ROLE_PERFORMER && message.role === ROLE_MEMBER) {
+              <i class="material-icons" (click)="choseMember(message.nickName)" [matTooltip]="'Send private message'">
+                supervised_user_circle
+              </i>
+            }
+          </div>
+          <div class="message-text">{{message.message}}</div>
+        </div>
+      }
+    }
+  </div>
+
+  @if (isCommonRoom() && role() === ROLE_PERFORMER && privateTo) {
+    <div class="private-message-notice" >
+      private message to : {{ privateTo }}
+    </div>
+  }
+  <div class="enter-text-container">
+    <textarea class="text-input" [(ngModel)]="inputText" (keydown.enter)="sand()" #messageTextarea></textarea>
+    <button class="btn btn-main" (click)="sand()">Send</button>
+  </div>
+</div>
